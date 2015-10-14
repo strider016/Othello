@@ -10,11 +10,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import game.Game;
 /**
  *
  * @author Zetterman
  */
+
 public class UI extends Application {
+    
+    private Game game;
+    
+    public static void main(String[] args)  { 
+        launch(args);
+        
+    }
+    
     
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -22,5 +33,10 @@ public class UI extends Application {
         primaryStage.setTitle("Othello");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
+        
+        
+        
+        
+        
     }
 }
