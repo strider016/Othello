@@ -59,7 +59,10 @@ public class Controller {
 
     @FXML
     private void HandleHighscoreButton(){
-        notCompleted.setText(TBA + "Highscore");
+        //notCompleted.setText(TBA + "Highscore");
+        
+        ui.getHighscoreStage().showAndWait();
+        
     }
 
     @FXML
