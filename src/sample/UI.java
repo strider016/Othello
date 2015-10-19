@@ -6,10 +6,16 @@
 package sample;
 
 import java.io.IOException;
+import java.util.Observable;
+
+import game.Player;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -28,10 +34,19 @@ public class UI extends Application {
     private BorderPane highscorePane;
     private Stage primaryStage;
     private Stage highscoreStage;
-    
-    public static void main(String[] args)  { 
+
+    private ObservableList<Player> playerData = FXCollections.observableArrayList();
+
+    public UI(){
+        playerData.add(new Player("Kalle","25"));
+        playerData.add(new Player("Janne","35"));
+        playerData.add(new Player("Anton","27"));
+        playerData.add(new Player("Joachim","38"));
+        playerData.add(new Player("Rasmus","39"));
+    }
+
+    public static void main(String[] args)  {
         launch(args);
-        
     }
     
     public void initBackgroundLayout(){
@@ -58,6 +73,28 @@ public class UI extends Application {
         }
     }
 
+    public void initHighscoreWindow(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UI.class.getResource("highscore.fxml"));
+            BorderPane page = loader.load();
+
+            highscoreStage = new Stage();
+            highscoreStage.setTitle("Highscore");
+            highscoreStage.initModality(Modality.WINDOW_MODAL);
+            highscoreStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            highscoreStage.setScene(scene);
+
+
+            HighscoreController controller = loader.getController();
+            controller.setHighscoreStage(highscoreStage, this);
+
+            highscoreStage.showAndWait();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
@@ -65,6 +102,7 @@ public class UI extends Application {
         
 
         initBackgroundLayout();
+        //initHighscoreWindow();
     }
     
     public void highscore(){
@@ -99,5 +137,9 @@ public class UI extends Application {
     public String getPlayerTwoScore(){
         //return game.getPlayerTwoScore();
         return "0";
+    }
+
+    public ObservableList<Player> getPlayerData(){
+        return playerData;
     }
 }

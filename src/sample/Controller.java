@@ -1,5 +1,6 @@
 package sample;
 
+import game.Player;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -9,6 +10,10 @@ import javafx.scene.control.*;
 import sample.UI;
 
 public class Controller {
+    @FXML
+    private TableView<Player> testView;
+    @FXML
+    private TableColumn<Player,String> testColumn;
     @FXML
     private Label playerOneLabel;
     @FXML
@@ -59,10 +64,7 @@ public class Controller {
 
     @FXML
     private void HandleHighscoreButton(){
-        //notCompleted.setText(TBA + "Highscore");
-        
-        ui.getHighscoreStage().showAndWait();
-        
+        ui.initHighscoreWindow();
     }
 
     @FXML
