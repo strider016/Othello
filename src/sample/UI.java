@@ -31,7 +31,6 @@ public class UI extends Application {
     
     private Game game;
     private BorderPane rootPane;
-    private BorderPane highscorePane;
     private Stage primaryStage;
     private Stage highscoreStage;
 
@@ -52,19 +51,11 @@ public class UI extends Application {
     public void initBackgroundLayout(){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UI.class.getResource("sample.fxml"));    
-            
+            loader.setLocation(UI.class.getResource("sample.fxml"));
             rootPane = loader.load();
-            
-            highscore();
-            
             Scene scene = new Scene(rootPane);
-            
             primaryStage.setScene(scene);
-            
             primaryStage.show();
-            
-            
 
             Controller controller = loader.getController();
             controller.setUI(this);
@@ -102,21 +93,6 @@ public class UI extends Application {
         
 
         initBackgroundLayout();
-        //initHighscoreWindow();
-    }
-    
-    public void highscore(){
-       
-        highscorePane = new BorderPane();
-        
-        highscoreStage = new Stage();
-        highscoreStage.setTitle("High score");
-        highscoreStage.setScene(new Scene(highscorePane, 350, 450));
-        
-    }
-    
-    public Stage getHighscoreStage(){
-        return highscoreStage;
     }
     
     public String getPlayerOneName(){

@@ -12,8 +12,12 @@ package game;
 
 
 public class Game {
-    
-    
-    
-    
+    private Board board;
+    private Rules rules;
+    private HighScore highScore;
+    private FileHandler fileHandler;
+
+    public Game(){
+
+    }
 }

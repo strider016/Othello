@@ -61,4 +61,8 @@ public class Player {
     public StringProperty endScoreProperty() {
         return endScore;
     }
+
+    public void placeDisk(){
+
+    }
 }
