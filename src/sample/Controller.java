@@ -43,6 +43,10 @@ public class Controller {
         this.ui = ui;
     }
 
+    public void setTestLabel(String text){
+        notCompleted.setText(text);
+    }
+
     private void showGameInformation(){
         playerOneLabel.setText(ui.getPlayerOneName());
         playerOneScoreLabel.setText(ui.getPlayerOneScore());

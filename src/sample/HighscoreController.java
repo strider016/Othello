@@ -16,7 +16,6 @@ public class HighscoreController {
     @FXML
     private TableColumn<Player,String> scoreColumn;
 
-    private Stage highscoreStage;
     private UI ui;
 
     @FXML
@@ -27,9 +26,8 @@ public class HighscoreController {
         scoreColumn.setCellValueFactory(cellData -> cellData.getValue().endScoreProperty());
     }
 
-    public void setHighscoreStage(Stage highscoreStage,UI ui){
-        this.highscoreStage = highscoreStage;
+    public void setHighscoreTable(UI ui){
         this.ui=ui;
-        highscoreTable.setItems(ui.getPlayerData());
+        highscoreTable.setItems(ui.getHighscore());
     }
 }

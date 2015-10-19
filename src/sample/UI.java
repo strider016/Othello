@@ -33,15 +33,11 @@ public class UI extends Application {
     private BorderPane rootPane;
     private Stage primaryStage;
     private Stage highscoreStage;
-
-    private ObservableList<Player> playerData = FXCollections.observableArrayList();
+    private Controller testcontroller;
 
     public UI(){
-        playerData.add(new Player("Kalle","25"));
-        playerData.add(new Player("Janne","35"));
-        playerData.add(new Player("Anton","27"));
-        playerData.add(new Player("Joachim","38"));
-        playerData.add(new Player("Rasmus","39"));
+        game = new Game();
+        game.addHighscoreTest();
     }
 
     public static void main(String[] args)  {
@@ -57,7 +53,23 @@ public class UI extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            Controller controller = loader.getController();
+            //Controller controller = loader.getController();
+            testcontroller = loader.getController();
+            testcontroller.setUI(this);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void initGameBoard(){
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UI.class.getResource("gameboardlayout.fxml"));
+            GridPane page = loader.load();
+
+            rootPane.setCenter(page);
+
+            GameBoardController controller = loader.getController();
             controller.setUI(this);
         }catch (IOException e){
             e.printStackTrace();
@@ -79,7 +91,7 @@ public class UI extends Application {
 
 
             HighscoreController controller = loader.getController();
-            controller.setHighscoreStage(highscoreStage, this);
+            controller.setHighscoreTable(this);
 
             highscoreStage.showAndWait();
         }catch (IOException e){
@@ -93,6 +105,7 @@ public class UI extends Application {
         
 
         initBackgroundLayout();
+        initGameBoard();
     }
     
     public String getPlayerOneName(){
@@ -115,7 +128,11 @@ public class UI extends Application {
         return "0";
     }
 
-    public ObservableList<Player> getPlayerData(){
-        return playerData;
+    public void setPlayerOneScore(String text){
+        testcontroller.setTestLabel(text);
+    }
+
+    public ObservableList<Player> getHighscore(){
+        return game.getHighscore();
     }
 }
