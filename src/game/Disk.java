@@ -10,16 +10,16 @@ public class Disk {
         BLACK, WHITE
     }
     private boolean placed;
-    private Color color; 
-    
+    private Color color;
+
+    public Disk(){
+
+    }
+
     public Disk(Color color){
         this.color = color;
     }
-    
-    public Disk(){
-        
-    }
-    
+
     public Disk(int pos){
         if ((pos % pos) == 0){
             this.color= Color.BLACK;
@@ -35,6 +35,10 @@ public class Disk {
         }else {
             return false;
         }
+    }
+
+    public boolean isPlaced(){
+        return placed;
     }
     
 
