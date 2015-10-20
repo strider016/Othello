@@ -68,7 +68,11 @@ public class Controller {
         notCompleted.setText(TBA + "New Game");
         //testLabel.setText(TBA);
         showGameInformation();
+<<<<<<< HEAD
         ui.printBoard();
+=======
+        
+>>>>>>> origin/master
     }
 
     @FXML
