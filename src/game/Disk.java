@@ -16,6 +16,10 @@ public class Disk {
         this.color = color;
     }
     
+    public Disk(){
+        
+    }
+    
     public Disk(int pos){
         if ((pos % pos) == 0){
             this.color= Color.BLACK;

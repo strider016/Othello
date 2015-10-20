@@ -16,7 +16,7 @@ public class Board {
         nmbOfDisks=64;
         ArrayList<Disk> rowBoard = new ArrayList<>();
         for (int j = 0;j<BOARD_SIZE;j++){
-            rowBoard.add(new Disk(j));          //ADDS EVERYSECOND COLOR
+            rowBoard.add(new Disk());          //ADDS EVERYSECOND COLOR
         }
         for (int i = 0; i<BOARD_SIZE;i++){
 
