@@ -109,6 +109,10 @@ public class UI extends Application {
         initGameBoard();
     }
     
+    public Game getGame(){
+        return this.game;
+    }
+    
     public String getPlayerOneName(){
         //return game.getPlayerOneName();
         return "Jeffrey";
