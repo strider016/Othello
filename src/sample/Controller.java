@@ -68,7 +68,7 @@ public class Controller {
         notCompleted.setText(TBA + "New Game");
         //testLabel.setText(TBA);
         showGameInformation();
-        
+        ui.printBoard();
     }
 
     @FXML

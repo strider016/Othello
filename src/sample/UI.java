@@ -71,6 +71,7 @@ public class UI extends Application {
 
             GameBoardController controller = loader.getController();
             controller.setUI(this);
+            controller.handleSquareSelected(page);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -132,11 +133,19 @@ public class UI extends Application {
         return "0";
     }
 
-    public void setPlayerOneScore(String text){
+    public void setTestLabel(String text){
         testcontroller.setTestLabel(text);
     }
 
     public ObservableList<Player> getHighscore(){
         return game.getHighscore();
+    }
+
+    public void placeDisk(int row, int column){
+        game.placeDisk(row,column);
+    }
+
+    public void printBoard(){
+        game.printPlacedBoard();
     }
 }

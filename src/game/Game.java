@@ -9,6 +9,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Zetterman
@@ -56,11 +58,31 @@ public class Game {
         return highScore.getHighscoreList();
     }
 
-    public boolean placeDisk(int row, int column){
-        if (board.placeDisk(row,column)){
+    public void placeDisk(int row, int column){
+        /*if (board.placeDisk(row,column)){
             return true;
         }else {
             return false;
+        }*/
+        if (!board.placedOccupied(row, column)){
+            board.placeDisk(row,column);
+        }
+    }
+
+    public void printPlacedBoard(){
+        ArrayList<ArrayList<Disk>> b = board.getBoard();
+        System.out.println("   1 2 3 4 5 6 7 8");
+        System.out.println("  ----------------");
+        for (int i = 0;i<8;i++){
+            System.out.print(i+1 + "|");
+            for (int j = 0;j<8;j++){
+                if (b.get(i).get(j).isPlaced()==true){
+                    System.out.print(" 1");
+                }else {
+                    System.out.print(" 0");
+                }
+            }
+            System.out.print("\n");
         }
     }
 }

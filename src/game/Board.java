@@ -14,12 +14,12 @@ public class Board {
     public Board(){
         board = new ArrayList<>();
         nmbOfDisks=64;
-        ArrayList<Disk> rowBoard = new ArrayList<>();
-        for (int j = 0;j<BOARD_SIZE;j++){
-            rowBoard.add(new Disk());          //ADDS EVERYSECOND COLOR, IF ADDED (J)
-        }
-        for (int i = 0; i<BOARD_SIZE;i++){
-
+        ArrayList<Disk> rowBoard;
+        for (int i = 0;i<BOARD_SIZE;i++){
+            rowBoard = new ArrayList<>();
+            for (int j = 0;j<BOARD_SIZE;j++){
+                rowBoard.add(new Disk());
+            }
             board.add(rowBoard);
         }
     }
@@ -29,10 +29,20 @@ public class Board {
     }
 
     public boolean placeDisk(int row,int column){
-        if (board.get(row).get(column).setPlaced()){
+        Disk d = new Disk();
+        d.setPlaced();
+        if (!placedOccupied(row,column)){
+            board.get(row).get(column).setPlaced();
              return true;
         }else {
             return false;
         }
+    }
+
+    public boolean placedOccupied(int row, int column){
+        return board.get(row).get(column).isPlaced();
+    }
+    public ArrayList<ArrayList<Disk>> getBoard() {
+        return board;
     }
 }
