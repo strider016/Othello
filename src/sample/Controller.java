@@ -53,6 +53,10 @@ public class Controller {
         playerTwoLabel.setText(ui.getPlayerTwoName());
         playerTwoScoreLabel.setText(ui.getPlayerTwoScore());
     }
+    
+    private void startGame(){
+        ui.getGame().newGame();
+    }
 
     @FXML
     private void HandleExitButton(){
@@ -64,6 +68,7 @@ public class Controller {
         notCompleted.setText(TBA + "New Game");
         //testLabel.setText(TBA);
         showGameInformation();
+        
     }
 
     @FXML

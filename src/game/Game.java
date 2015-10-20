@@ -20,11 +20,24 @@ public class Game {
     private FileHandler fileHandler;
 
     public Game(){
-        board = new Board();
+        board = new Board(); //sets 4 center disks?
         rules = new Rules();
         highScore = new HighScore();
+        game();
     }
-
+    
+    public void newGame(){
+        board = new Board();
+        game();
+    }
+    
+    public void game(){
+        
+        //Some sort of while loop
+        
+        
+    }
+    
     public void addHighscoreTest(){
         highScore.addNewHighscore(new Player("Kalle","25"));
         highScore.addNewHighscore(new Player("Janne","35"));
