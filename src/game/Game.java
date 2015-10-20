@@ -5,13 +5,14 @@
  */
 package game;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 
 /**
  *
  * @author Zetterman
  */
-
 
 public class Game {
     private Board board;
@@ -23,7 +24,7 @@ public class Game {
         board = new Board(); //sets 4 center disks?
         rules = new Rules();
         highScore = new HighScore();
-        game();
+        //Read in highscore from file
     }
     
     public void newGame(){
