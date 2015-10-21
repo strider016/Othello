@@ -37,7 +37,7 @@ public class UI extends Application {
 
     public UI() {
         game = new Game();
-        //game.addHighscoreTest();
+        game.addHighscoreTest();
         game.sortHighScore();
     }
 
