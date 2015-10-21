@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Comparator;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,6 +28,26 @@ public class Player {
         posY = 0;
         currentScore = 0;
     }
+    
+    public static Comparator<Player> getCompByEndScore()
+        {   
+         Comparator comp = new Comparator<Player>(){
+             @Override
+             public int compare(Player p1, Player p2)
+             {   
+                 if(p1.getEndScoreInInt() > p2.getEndScoreInInt()){
+                     return -1;
+                 }
+                 else if(p1.getEndScoreInInt() < p2.getEndScoreInInt()){
+                     return 1;
+                 }
+                 else{
+                     return 0;
+                 }
+             }        
+         };
+         return comp;
+    }  
 
     public int getPosX(){
         return posX;
@@ -60,6 +81,9 @@ public class Player {
     }
     public StringProperty endScoreProperty() {
         return endScore;
+    }
+    public int getEndScoreInInt() {
+        return Integer.parseInt(getEndScore());
     }
 
     public void placeDisk(){

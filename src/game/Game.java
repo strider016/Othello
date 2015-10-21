@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -22,11 +23,12 @@ public class Game {
     private HighScore highScore;
     private FileHandler fileHandler;
 
-    public Game(){
+
+    public Game() {
         board = new Board(); //sets 4 center disks?
         rules = new Rules();
         highScore = new HighScore();
-        //Read in highscore from file
+
     }
     
     public void newGame(){
@@ -41,6 +43,14 @@ public class Game {
         
     }
     
+    public void sortHighScore(){
+        Collections.sort(highScore.getHighscoreList(), Player.getCompByEndScore());
+        
+        for(Player p : highScore.getHighscoreList()){
+            System.out.println("Highscore player:" + p.getEndScore());
+        }
+    }
+    
     public void addHighscoreTest(){
         highScore.addNewHighscore(new Player("Kalle","25"));
         highScore.addNewHighscore(new Player("Janne","35"));
@@ -48,6 +58,7 @@ public class Game {
         highScore.addNewHighscore(new Player("Joachim","38"));
         highScore.addNewHighscore(new Player("Rasmus", "39"));
         highScore.addNewHighscore(new Player("Joachim", "42"));
+        
     }
 
     public void addHighScore(Player p){

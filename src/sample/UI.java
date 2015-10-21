@@ -35,9 +35,10 @@ public class UI extends Application {
     private Stage highscoreStage;
     private Controller testcontroller;
 
-    public UI(){
+    public UI() {
         game = new Game();
         game.addHighscoreTest();
+        game.sortHighScore();
     }
 
     public static void main(String[] args)  {
