@@ -1,12 +1,15 @@
 package sample;
 
 import javafx.event.*;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Label;
 import javafx.scene.Node;
 import javafx.scene.layout.HBox;
+
+import java.io.IOException;
 
 /**
  * Created by rasmusjansson on 19/10/15.
@@ -18,14 +21,14 @@ public class GameBoardController {
     @FXML
     private Label testLabel;
 
-    private int squareSelectedX;
-    private int squareSelectedY;
+    private HBox hBox;
+    private int squareSelectedColumn;
+    private int squareSelectedRow;
     private UI ui;
     private GridPane gridPane;
 
     @FXML
     private void initialize(){
-
     }
 
     public void setUI(UI ui){
@@ -42,17 +45,24 @@ public class GameBoardController {
                     if (node instanceof HBox){
                         if (node.getBoundsInParent().contains(e.getSceneX(),e.getSceneY())){
                             if (GridPane.getRowIndex(node)==null){
-                                squareSelectedY=0;
+                                squareSelectedRow=0;
                             }else {
-                                squareSelectedY=GridPane.getRowIndex(node);
+                                squareSelectedRow=GridPane.getRowIndex(node);
                             }
                             if (GridPane.getColumnIndex(node)==null){
-                                squareSelectedX=0;
+                                squareSelectedColumn=0;
                             }else {
-                                squareSelectedX=GridPane.getColumnIndex(node);
+                                squareSelectedColumn=GridPane.getColumnIndex(node);
                             }
-                            ui.setTestLabel((squareSelectedY+1) + "/" + (squareSelectedX+1));
-                            ui.placeDisk(squareSelectedY,squareSelectedX);
+                            ui.setTestLabel((squareSelectedRow + 1) + "/" + (squareSelectedColumn + 1));
+                            if (!ui.placeOccupied(squareSelectedRow,squareSelectedColumn)){
+                                try {
+                                    ((HBox) node).getChildren().add((Node) FXMLLoader.load(getClass().getResource("disklayoutblack.fxml")));
+                                    ui.placeDisk(squareSelectedRow, squareSelectedColumn);
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                            }
                         }
                     }
                 }

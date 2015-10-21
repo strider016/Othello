@@ -88,6 +88,14 @@ public class Game implements Serializable{
         }
     }
 
+    public boolean placeOccupied(int row, int column){
+        if (board.placedOccupied(row, column)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public void printPlacedBoard(){
         ArrayList<ArrayList<Disk>> b = board.getBoard();
         System.out.println("   1 2 3 4 5 6 7 8");

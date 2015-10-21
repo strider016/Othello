@@ -34,7 +34,4 @@
             <Label fx:id="notCompleted" layoutX="229.0" layoutY="6.0" text="Label" />
          </children></AnchorPane>
    </bottom>
-   <left>
-      <Label fx:id="testLabel" text="Label" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>

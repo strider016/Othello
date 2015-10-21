@@ -29,69 +29,69 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
-      <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="3" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" GridPane.rowIndex="4" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="5" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="7" GridPane.rowIndex="6" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #009900;" GridPane.columnIndex="6" GridPane.rowIndex="7" />
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #00FF00;" GridPane.columnIndex="7" GridPane.rowIndex="7" />
    </children>
 </GridPane>

@@ -36,7 +36,6 @@ public class Controller {
     @FXML
     private void initialize(){
         notCompleted.setText("");
-        testLabel.setText("");
     }
 
     public void setUI(UI ui){
