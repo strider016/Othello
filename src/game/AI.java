@@ -1,13 +1,17 @@
 package game;
 
 /**
- * Created by rasmusjansson on 19/10/15.
+ * @author Joachim Zetterman & Rasmus Jansson.
  */
 public class AI extends Player {
+    
+    /** 
+     * Constructor of AI
+     */
     public AI(){
 
     }
-
+    
     public void checkMaxValue(Board b){
 
     }

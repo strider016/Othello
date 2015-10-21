@@ -7,7 +7,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * Created by rasmusjansson on 18/10/15.
+ * The player class for the game Othello. A player will be able to controll all the actions on the board. AI will also have the same Player rights but it's algorithms will in return only do specific things.
+ * @author Joachim Zetterman & Rasmus Jansson.
  */
 public class Player {
 
@@ -17,12 +18,21 @@ public class Player {
     private SimpleStringProperty username;
     private SimpleStringProperty endScore;
     
-    public static Disk.Color color;
-
+    private static Disk.Color color;
+    
+    /**
+     * Default constructor
+     */
     public Player(){
         //this(null,null);
     }
-
+    
+    /**
+     * Takes in a username, endScore and the type of color of the disk.
+     * @param username, String
+     * @param endScore, String
+     * @param color, of the type Disk.Color
+     */
     public Player(String username,String endScore, Disk.Color color){
         this.username=new SimpleStringProperty(username);
         this.endScore=new SimpleStringProperty(endScore);
@@ -33,6 +43,10 @@ public class Player {
         this.color = color;
     }
     
+    /**
+     * Compares the player endscore points. Returns -1 if the p1 has a greater value then p2. Returns 1 if the p1 has a less value then p2. Otherwise it returns 0 if they are equal
+     * @return -1, 1 or 0
+     */
     public static Comparator<Player> getCompByEndScore()
         {   
          Comparator comp = new Comparator<Player>(){
@@ -52,7 +66,11 @@ public class Player {
          };
          return comp;
     }  
-
+    
+    /**
+     * 
+     * @return 
+     */
     public int getPosX(){
         return posX;
     }

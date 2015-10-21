@@ -4,12 +4,19 @@ import java.io.*;
 import javafx.collections.ObservableList;
 
 /**
- * Created by rasmusjansson on 19/10/15.
+ * A filehandler. Contains a read and write methods. It read and writes to a file named "highscore.ser"
+ * @author Joachim Zetterman & Rasmus Jansson.
  */
 
 @SuppressWarnings("unchecked")
 public class FileHandler {
- 
+    
+    /**
+     * Reads the file "highscore.ser" and filles a list with read players.
+     * Returns a reference to this list. 
+     * @return highscoreList, of type ObservableList<Player>
+     * @throws Exception 
+     */
     public ObservableList<Player> read() throws Exception {
 
         ObjectInputStream ois = null;
@@ -32,6 +39,11 @@ public class FileHandler {
         return highscoreList;
     }
     
+    /**
+     * Writes to the file "highscore.ser". Inputed variable should be of type ObservableList<Player> 
+     * @param highscoreList, of type ObservableList<Player> 
+     * @throws Exception 
+     */
     public void write(ObservableList<Player> highscoreList) throws Exception {
         ObjectOutputStream oos = null;
         try {
