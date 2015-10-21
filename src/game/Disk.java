@@ -6,7 +6,7 @@ package game;
 public class Disk {
     
     
-    private enum Color{
+    public enum Color{
         BLACK, WHITE
     }
     private boolean placed;

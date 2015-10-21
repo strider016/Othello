@@ -16,17 +16,21 @@ public class Player {
     private int currentScore;
     private SimpleStringProperty username;
     private SimpleStringProperty endScore;
+    
+    public static Disk.Color color;
 
     public Player(){
-        this(null,null);
+        //this(null,null);
     }
 
-    public Player(String username,String endScore){
+    public Player(String username,String endScore, Disk.Color color){
         this.username=new SimpleStringProperty(username);
         this.endScore=new SimpleStringProperty(endScore);
         posX = 0;
         posY = 0;
         currentScore = 0;
+        
+        this.color = color;
     }
     
     public static Comparator<Player> getCompByEndScore()

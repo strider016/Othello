@@ -60,6 +60,7 @@ public class Controller {
 
     @FXML
     private void HandleExitButton(){
+        ui.getGame().writeToFile();
         System.exit(0);
     }
 

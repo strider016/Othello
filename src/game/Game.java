@@ -21,14 +21,17 @@ public class Game {
     private Board board;
     private Rules rules;
     private HighScore highScore;
-    private FileHandler fileHandler;
-
+    private FileHandler fileHandler = new FileHandler();
+    private Player player1;
+    private Player player2;
 
     public Game() {
         board = new Board(); //sets 4 center disks?
         rules = new Rules();
         highScore = new HighScore();
-
+        
+        try { highScore.getHighscoreList().addAll(fileHandler.read());
+        } catch (Exception ex){  }
     }
     
     public void newGame(){
@@ -45,19 +48,15 @@ public class Game {
     
     public void sortHighScore(){
         Collections.sort(highScore.getHighscoreList(), Player.getCompByEndScore());
-        
-        for(Player p : highScore.getHighscoreList()){
-            System.out.println("Highscore player:" + p.getEndScore());
-        }
     }
     
     public void addHighscoreTest(){
-        highScore.addNewHighscore(new Player("Kalle","25"));
-        highScore.addNewHighscore(new Player("Janne","35"));
-        highScore.addNewHighscore(new Player("Anton","27"));
-        highScore.addNewHighscore(new Player("Joachim","38"));
-        highScore.addNewHighscore(new Player("Rasmus", "39"));
-        highScore.addNewHighscore(new Player("Joachim", "42"));
+        highScore.addNewHighscore(new Player("Kalle","39", Disk.Color.BLACK));
+        highScore.addNewHighscore(new Player("Janne","35", Disk.Color.BLACK));
+        highScore.addNewHighscore(new Player("Anton","1", Disk.Color.BLACK));
+        highScore.addNewHighscore(new Player("Joachim","38", Disk.Color.BLACK));
+        highScore.addNewHighscore(new Player("Rasmus", "3", Disk.Color.BLACK));
+        highScore.addNewHighscore(new Player("Joachim", "42", Disk.Color.BLACK));
         
     }
 
@@ -94,6 +93,14 @@ public class Game {
                 }
             }
             System.out.print("\n");
+        }
+    }
+    
+    public void writeToFile(){
+        try {
+            fileHandler.write(highScore.getHighscoreList());
+        } catch (Exception ex) {
+            System.out.println("Could no write the highscorelist to file");
         }
     }
 }

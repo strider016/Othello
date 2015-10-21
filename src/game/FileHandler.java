@@ -16,6 +16,7 @@ public class FileHandler {
         ObservableList<Player> highscoreList;
         try {
             FileInputStream fin = new FileInputStream("highscore.ser");
+            
             ois = new ObjectInputStream(fin);
 
             highscoreList = (ObservableList<Player>) ois.readObject();
@@ -31,12 +32,12 @@ public class FileHandler {
         return highscoreList;
     }
     
-    public void write(ObservableList<Player> books) throws Exception {
+    public void write(ObservableList<Player> highscoreList) throws Exception {
         ObjectOutputStream oos = null;
         try {
             FileOutputStream fout = new FileOutputStream("highscore.ser");
             oos = new ObjectOutputStream(fout);
-            oos.writeObject(books);
+            oos.writeObject(highscoreList);
 
         } finally {
             if (oos != null) {

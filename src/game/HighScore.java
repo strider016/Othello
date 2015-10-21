@@ -14,7 +14,6 @@ public class HighScore {
     public HighScore(){
 
     }
-    
 
     public ObservableList<Player> getHighscoreList(){
         return highscoreList;
