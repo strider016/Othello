@@ -75,6 +75,6 @@ public class Controller {
 
     @FXML
     private void HandleRulesButton(){
-        notCompleted.setText(TBA + "Rules");
+        ui.initRulesWindow();
     }
 }
