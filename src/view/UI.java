@@ -3,22 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sample;
+package view;
 
 import java.io.IOException;
-import java.util.Observable;
 
 import game.Player;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 
 import game.Game;
 import javafx.scene.layout.GridPane;
@@ -34,6 +30,7 @@ public class UI extends Application {
     private Stage primaryStage;
     private Stage highscoreStage;
     private Controller testcontroller;
+    private boolean turn;
 
     public UI() {
         game = new Game();
@@ -48,7 +45,7 @@ public class UI extends Application {
     public void initBackgroundLayout(){
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(UI.class.getResource("sample.fxml"));
+            loader.setLocation(UI.class.getResource("rootwindow.fxml"));
             rootPane = loader.load();
             Scene scene = new Scene(rootPane);
             primaryStage.setScene(scene);
@@ -64,6 +61,7 @@ public class UI extends Application {
 
     public void initGameBoard(){
         try{
+            //800 width, 542 height
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(UI.class.getResource("gameboardlayout.fxml"));
             GridPane page = loader.load();
@@ -72,7 +70,9 @@ public class UI extends Application {
 
             GameBoardController controller = loader.getController();
             controller.setUI(this);
-            controller.handleSquareSelected(page);
+            controller.setPane(page);
+            controller.newBoard();
+            controller.handleSquareSelected();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -109,7 +109,12 @@ public class UI extends Application {
         initBackgroundLayout();
         initGameBoard();
     }
-    
+
+    public void newGame(){
+        game.newGame();
+        initGameBoard();
+    }
+
     public Game getGame(){
         return this.game;
     }
@@ -152,6 +157,20 @@ public class UI extends Application {
         }else {
             return false;
         }
+    }
+
+    /**
+     * Get which player turn it is.<br>
+     * False if player 1 turn.
+     * True if player 2 turn
+     * @return boolean
+     */
+    public boolean getPlayerTurn(){
+        return turn;
+    }
+
+    public void changeTurn(){
+        turn ^= true;
     }
 
     public void printBoard(){

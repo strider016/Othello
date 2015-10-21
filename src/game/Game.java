@@ -23,8 +23,8 @@ public class Game implements Serializable{
     private Rules rules;
     private HighScore highScore;
     private FileHandler fileHandler = new FileHandler();
-    private Player player1;
-    private Player player2;
+    private Player playerOne;
+    private Player playerTwo;
 
     public Game() {
         board = new Board(); //sets 4 center disks?
@@ -119,5 +119,21 @@ public class Game implements Serializable{
         } catch (Exception ex) {
             System.out.println("Could no write the highscorelist to file");
         }
+    }
+
+    public String getPlayerOneName(){
+        return playerOne.getUsername();
+    }
+
+    public String getPlayerOneScore(){
+        return playerOne.getCurrentScoreString();
+    }
+
+    public String getPlayerTwoName(){
+        return playerTwo.getUsername();
+    }
+
+    public String getPlayerTwoScore(){
+        return playerTwo.getCurrentScoreString();
     }
 }

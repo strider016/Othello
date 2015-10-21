@@ -4,7 +4,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="300.0" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HighscoreController">
+<BorderPane maxHeight="300.0" maxWidth="200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HighscoreController">
    <center>
       <TableView fx:id="highscoreTable" BorderPane.alignment="CENTER">
         <columns>

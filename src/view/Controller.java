@@ -1,13 +1,9 @@
-package sample;
+package view;
 
 import game.Player;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
-import sample.UI;
 
 public class Controller {
     @FXML
@@ -69,6 +65,7 @@ public class Controller {
         //testLabel.setText(TBA);
         showGameInformation();
         ui.printBoard();
+        ui.newGame();
     }
 
     @FXML

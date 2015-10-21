@@ -90,6 +90,10 @@ public class Player {
         return Integer.parseInt(getEndScore());
     }
 
+    public String getCurrentScoreString(){
+        return Integer.toString(currentScore);
+    }
+
     public void placeDisk(){
 
     }

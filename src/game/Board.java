@@ -22,6 +22,10 @@ public class Board {
             }
             board.add(rowBoard);
         }
+        placeDisk(3,3);
+        placeDisk(3,4);
+        placeDisk(4,3);
+        placeDisk(4,4);
     }
 
     public int getDisksRemaining(){
