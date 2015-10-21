@@ -68,50 +68,93 @@ public class Player {
     }  
     
     /**
-     * 
-     * @return 
+     * Gets the pos X of the player
+     * @return posX, int
      */
     public int getPosX(){
         return posX;
     }
-
+    
+    /**
+     * Gets the pos Y of the player
+     * @return posY, int
+     */
     public int getPosY() {
         return posY;
     }
-
+    
+    /**
+     * Gets the current score of the player
+     * @return currentScore, int
+     */
     public int getCurrentScore() {
         return currentScore;
     }
-
+    
+    /**
+     * Gets the username of the player
+     * @return 
+     */
     public String getUsername() {
         return username.get();
     }
-
+    
+    /**
+     * Sets the username of the player
+     * @param username , string
+     */
     public void setUsername(String username){
         this.username.set(username);
     }
+    
+    /**
+     * Gets the username property of the current player
+     * @return 
+     */
     public StringProperty usernameProperty() {
         return username;
     }
-
+    
+    /**
+     * Gets the end score of the player
+     * @return 
+     */
     public String getEndScore() {
         return endScore.get();
     }
-
+    
+    /**
+     * Sets the end score of the player
+     * @param endScore 
+     */
     public void setEndScore(String endScore){
         this.endScore.set(endScore);
     }
+    
+    /**
+     * Gets the end score property of the player
+     * @return endScore, StringProperty
+     */
     public StringProperty endScoreProperty() {
         return endScore;
     }
+    
+    /**
+     * Gets the endscore property in type int (transforms from StringProperty to Int)
+     * @return 
+     */
     public int getEndScoreInInt() {
         return Integer.parseInt(getEndScore());
     }
-
+    
+    /**
+     * Gets the current score in transformed type String
+     * @return 
+     */
     public String getCurrentScoreString(){
         return Integer.toString(currentScore);
     }
-
+    
     public void placeDisk(){
 
     }
