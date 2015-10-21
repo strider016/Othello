@@ -146,6 +146,14 @@ public class UI extends Application {
         game.placeDisk(row,column);
     }
 
+    public boolean placeOccupied(int row, int column){
+        if (game.placeOccupied(row,column)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public void printBoard(){
         game.printPlacedBoard();
     }

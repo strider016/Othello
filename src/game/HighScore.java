@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 /**
  * Created by rasmusjansson on 19/10/15.
  */
-public class HighScore {
+public class HighScore{
    
     private ObservableList<Player> highscoreList = FXCollections.observableArrayList();
 

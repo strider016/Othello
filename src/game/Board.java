@@ -40,8 +40,13 @@ public class Board {
     }
 
     public boolean placedOccupied(int row, int column){
-        return board.get(row).get(column).isPlaced();
+        if (board.get(row).get(column).isPlaced()){
+            return true;
+        }else {
+            return false;
+        }
     }
+
     public ArrayList<ArrayList<Disk>> getBoard() {
         return board;
     }
