@@ -5,6 +5,7 @@
  */
 package game;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
@@ -17,7 +18,7 @@ import java.util.Collections;
  * @author Zetterman
  */
 
-public class Game {
+public class Game implements Serializable{
     private Board board;
     private Rules rules;
     private HighScore highScore;
@@ -30,8 +31,16 @@ public class Game {
         rules = new Rules();
         highScore = new HighScore();
         
-        try { highScore.getHighscoreList().addAll(fileHandler.read());
-        } catch (Exception ex){  }
+        try {
+            highScore.getHighscoreList().addAll(fileHandler.read());
+        } catch (Exception ex) {
+            
+        }
+        
+        for(Player p : highScore.getHighscoreList()){
+            System.out.println("Players : " + p.getEndScore());
+        }
+
     }
     
     public void newGame(){
@@ -96,7 +105,7 @@ public class Game {
         }
     }
     
-    public void writeToFile(){
+    public void writeToFile(){ 
         try {
             fileHandler.write(highScore.getHighscoreList());
         } catch (Exception ex) {

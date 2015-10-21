@@ -18,7 +18,7 @@ public class HighScore {
     public ObservableList<Player> getHighscoreList(){
         return highscoreList;
     }
-
+    
     public void addNewHighscore(Player p){
         highscoreList.add(p);
     }
