@@ -24,6 +24,7 @@ public class Game implements Serializable{
     private FileHandler fileHandler = new FileHandler();
     private Player playerOne;
     private Player playerTwo;
+    private AI ai;
     
     /**
      * Constructor for Game.
@@ -49,6 +50,10 @@ public class Game implements Serializable{
         board = new Board();
         playerOne = new Player("Rasmus","30", Disk.Color.WHITE);
         playerTwo = new Player("Joachim","30", Disk.Color.BLACK);
+        
+        ai = new AI();
+        ai.setColor(Disk.Color.BLACK);
+        
     }
     
     /**
@@ -74,6 +79,15 @@ public class Game implements Serializable{
      */
     public void addHighScore(Player p){
         highScore.addNewHighscore(p);
+    }
+    
+    public void roundAI(){
+        
+        ai.setAvailableSlots(board.getAvailableSlots(ai));
+        ai.setLocationDisks(board.getLocationDisks(ai));
+        ai.checkForMoveWithMaxPoint();
+        placeDisk(ai.getRowMax(), ai.getColumnMax(), true);
+        
     }
     
     /**

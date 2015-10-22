@@ -72,7 +72,8 @@ public class UI extends Application {
                 column = Integer.parseInt(tmparr[1]);
                 gameBoardController.blinkAvailableSlot(row,column);
             }
-
+            
+            
             if (game.isGameOver()){
                 timer.stop();
             }

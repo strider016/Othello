@@ -158,6 +158,10 @@ public class Player {
     public Disk.Color getColor(){
         return color;
     }
+    
+    public void setColor(Disk.Color color){
+        this.color = color;
+    }
 
     public void placeDisk(){
 
