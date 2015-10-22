@@ -221,6 +221,86 @@ public class Board {
         return mySlots;
     }
 
+    public ArrayList<String> diskToBeChanged(ArrayList<String> locaList,Player p){
+        ArrayList<String> locList = locaList;
+        ArrayList<String> changeList = new ArrayList<>();
+        int row,column,res,resA,resX,resY;
+
+        for (int i = 0;i<locList.size();i++){
+            String tmp = locList.get(i);
+            String[] tmparr = tmp.split("[^\\d]+");
+            row = Integer.parseInt(tmparr[0]);
+            column = Integer.parseInt(tmparr[1]);
+            //If two disk on same column
+            if (p.getPosX()==column){
+                if (p.getPosY() > row){
+                    res=p.getPosY()-row-1;
+                    resA=p.getPosY();
+                }else {
+                    res=row-p.getPosY()-1;
+                    resA=row;
+                }
+                for (int j = 0; j<res;j++){
+                    changeList.add((resA-(res-j)) + " " +column);
+                }
+            }
+            //If two disk on same row
+            if (p.getPosY() == row){
+                if (p.getPosX()>column){
+                    res=p.getPosX()-column-1;
+                    resA=p.getPosX();
+                }else {
+                    res=column-p.getPosX()-1;
+                    resA=column;
+                }
+                for (int j = 0;j<res;j++){
+                    changeList.add(row + " " + (resA-(res-j)));
+                }
+            }
+            //Up right
+            if (p.getPosX()<column && p.getPosY()>row){
+                resX=column-p.getPosY()-1;
+                resY=p.getPosY()-row-1;
+                for (int j=0;j<resX;j++){
+                    for (int h=0;h<resY;h++){
+                        changeList.add((p.getPosY()-(resY-h)) + " " + (column-(resX-j)));
+                    }
+                }
+            }
+            //Down right
+            if (p.getPosX()<column && p.getPosY()<row){
+                resX=column-p.getPosY()-1;
+                resY=row-p.getPosY()-1;
+                for (int j=0;j<resX;j++){
+                    for (int h=0;h<resY;h++){
+                        changeList.add((row-(resY-h)) + " " + (column-(resX-j)));
+                    }
+                }
+            }
+            //Up left
+            if (p.getPosX()>column && p.getPosY()>row){
+                resX=p.getPosY()-column-1;
+                resY=p.getPosY()-row-1;
+                for (int j=0;j<resX;j++){
+                    for (int h=0;h<resY;h++){
+                        changeList.add((p.getPosY()-(resY-h)) + " " + (p.getPosX()-(resX-j)));
+                    }
+                }
+            }
+            //Down left
+            if (p.getPosX()>column && p.getPosY()<row){
+                resX=p.getPosY()-column-1;
+                resY=row-p.getPosY()-1;
+                for (int j=0;j<resX;j++){
+                    for (int h=0;h<resY;h++){
+                        changeList.add((row-(resY-h)) + " " + (p.getPosX()-(resX-j)));
+                    }
+                }
+            }
+        }
+        return changeList;
+    }
+
     /**
      * Places a disk on the desired row and colum. It returns true/false depending if the place is already occupied by a disk.
      * @param row int
@@ -246,6 +326,10 @@ public class Board {
      */
     public boolean placedOccupied(int row, int column){
         return board.get(row).get(column).isPlaced();
+    }
+
+    public void changeColorOfDisk(int row, int column, Disk.Color color){
+        board.get(row).get(column).setColor(color);
     }
 
     /**

@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by rasmusjansson on 19/10/15.
@@ -84,7 +85,7 @@ public class GameBoardController {
     }
 
     public void handleSquareSelected(){
-        gridPane.addEventFilter(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        gridPane.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             ArrayList<String> tmpAvailableSlots;
             @Override
             public void handle(MouseEvent e) {
@@ -119,7 +120,7 @@ public class GameBoardController {
                                         try {
                                             ((HBox) node).getChildren().add((Node) FXMLLoader.load(getClass().getResource(diskcolor)));
                                             ui.placeDisk(squareSelectedRow, squareSelectedColumn);
-                                            //ui.changeTurn();
+                                            ui.changeTurn();
                                         } catch (IOException e1) {
                                             e1.printStackTrace();
                                         }
@@ -133,12 +134,28 @@ public class GameBoardController {
         });
     }
 
+    public void changeColorOnDisk(int row,int column,boolean color){
+        Circle node = new Circle();
+        try {
+            if (color) {
+                node = FXMLLoader.load(UI.class.getResource("disklayoutblack.fxml"));
+            }else {
+                 node = FXMLLoader.load(UI.class.getResource("disklayoutwhite.fxml"));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GridPane.setHalignment(node,HPos.CENTER);
+        GridPane.setValignment(node,VPos.CENTER);
+        gridPane.add(node,column,row);
+    }
+
     public void blinkAvailableSlot(int rowIn,int columnIn,int size){
         int row,column;
         FadeTransition ft;
 
-        row=rowIn*67+rowIn;
-        column=columnIn*99+columnIn;
+        row=rowIn*67+rowIn+10;
+        column=columnIn*99+columnIn+10;
 
         int bol = 10;
         for (int i = 0; i<size;i++){

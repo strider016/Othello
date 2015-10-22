@@ -168,4 +168,11 @@ public class Player implements Serializable{
         return color;
     }
 
+    public void setPosX(int x){
+        posX=x;
+    }
+
+    public void setPosY(int y){
+        posY=y;
+    }
 }

@@ -105,6 +105,27 @@ public class Game implements Serializable{
         placeDisk(ai.getRowMax(), ai.getColumnMax(), true);
         
     }
+
+    public void changeColorOfDisk(int row, int column, boolean player){
+        if(player){
+            board.changeColorOfDisk(row,column,Disk.Color.BLACK);
+        }else {
+            board.changeColorOfDisk(row,column, Disk.Color.WHITE);
+        }
+    }
+
+    public ArrayList<String> getDisksToBeChanged(int row,int column,boolean turn){
+        if (turn) {
+            playerTwo.setPosX(column);
+            playerTwo.setPosY(row);
+            return board.diskToBeChanged(getLocationDisks(turn),playerTwo);
+        }else {
+            playerOne.setPosX(column);
+            playerOne.setPosY(row);
+            return board.diskToBeChanged(getLocationDisks(turn),playerOne);
+        }
+
+    }
     
     /**
      * Gets the highscore list of the type ObservableList<Player>
@@ -222,7 +243,10 @@ public class Game implements Serializable{
         }
     }
 
-    public boolean isGameOver(){
+    public boolean isGameOver(boolean turn){
+        if (getAvailableSlots(turn).size()<=0){
+            return true;
+        }
         return false;
     }
 }

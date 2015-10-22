@@ -78,7 +78,7 @@ public class UI extends Application {
             }
             
             
-            if (game.isGameOver()){
+            if (game.isGameOver(turn)){
                 timer.stop();
             }
 
@@ -249,15 +249,36 @@ public class UI extends Application {
 
     public void placeDisk(int row, int column){
         game.placeDisk(row,column,turn);
-        changeTurn();
         testcontroller.showGameInformation();
-        printAvailbleSlots();
+
+        //changeColorOnDisk(row, column);
+        changeColorOfDisks(row,column);
+        //printAvailbleSlots();
+        //changeTurn();
         availableSlots = game.getAvailableSlots(turn);
 
+    }
+    public void changeColorOfDisks(int rowP,int colP){
+        ArrayList<String> tmpArr = game.getDisksToBeChanged(rowP,colP,turn);
+        int row,column;
+        System.out.println("-------------");
+        for (int i = 0;i<tmpArr.size();i++){
+            String tmp = tmpArr.get(i);
+            String[] tmparr = tmp.split("[^\\d]+");
+            row = Integer.parseInt(tmparr[0]);
+            column = Integer.parseInt(tmparr[1]);
+            changeColorOnDisk(row,column);
+            game.changeColorOfDisk(row,column,turn);
+            System.out.println(row + "/" + column);
+        }
     }
 
     public boolean placeOccupied(int row, int column){
         return game.placeOccupied(row,column);
+    }
+
+    public void changeColorOnDisk(int row, int column){
+        gameBoardController.changeColorOnDisk(row,column,turn);
     }
 
     /**
@@ -270,9 +291,10 @@ public class UI extends Application {
         return turn;
     }
 
-    private void changeTurn(){
+    public void changeTurn(){
         turn ^= true;
     }
+
 
     public ArrayList<String> getAvailableSlots(){
         return game.getAvailableSlots(turn);
