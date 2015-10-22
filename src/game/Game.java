@@ -6,13 +6,11 @@
 package game;
 
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import javafx.collections.FXCollections;
+
 
 /**
  * Game class for the game Othello.
@@ -22,7 +20,7 @@ import javafx.collections.FXCollections;
 public class Game implements Serializable{
     private Board board;
     private HighScore highScore;
-    private FileHandler fileHandler = new FileHandler();
+    private FileHandler fileHandler;
     private Player playerOne;
     private Player playerTwo;
     private AI ai;
@@ -31,31 +29,35 @@ public class Game implements Serializable{
      * Constructor for Game.
      * Creates a new board and highscore. It also reads in all the eventual highscore data and adds it to the highscore list.
      */
-    public Game() {
+    public Game() throws Exception{
         board = new Board(); //sets 4 center disks?
         highScore = new HighScore();
+        fileHandler = new FileHandler();
         
-        readAndList();
+//        readAndList();
 
     }
     
-    private void readAndList(){
-        ArrayList<Player> temp = new ArrayList<>();
+    private void readAndList() throws Exception{
+        ArrayList<Player> temp;
         ObservableList<Player> highscoreList = highScore.getHighscoreList();
         
-        try {
-            temp = fileHandler.read();
-        } catch (Exception ex) {
+        temp = fileHandler.read();
+        if(temp==null){
+                temp = new ArrayList();
         }
-        
-        int i=0;
-        for(Player p : temp){
-            highscoreList.get(i).setUsername(p.getUsername());
-            highscoreList.get(i).setEndScore(p.getEndScore());
-            i++;
-        }  
-        
-        highScore.setHighscoreList(highscoreList);
+  
+        if(!temp.isEmpty()){
+            
+            int i=0;
+            for(Player p : temp){
+                highscoreList.get(i).setUsername(p.getUsername());
+                highscoreList.get(i).setEndScore(p.getEndScore());
+                i++;
+            }  
+
+            highScore.setHighscoreList(highscoreList);   
+        }
     }
     
     public void newGame(String usrPlayerOne,String usrPlayerTwo,boolean mode){
@@ -157,22 +159,19 @@ public class Game implements Serializable{
     /**
      * Write the highscore list to the file specified in the filehandler class
      */
-    public void writeToFile(){ 
-        ArrayList<Player> temp = new ArrayList();
+    public void writeToFile() throws Exception{ 
+        ArrayList<Player> tempArraylist = new ArrayList();
         ObservableList<Player> highscoreList = highScore.getHighscoreList();
         
-        int i=0;
-        for(Player p : highscoreList){
-            temp.get(i).setUsername(p.getUsername());
-            temp.get(i).setEndScore(p.getEndScore());
-            i++;
-        }  
-        
-        try {
-            fileHandler.write(temp);
-        } catch (Exception ex) {
-            System.out.println("Could no write the highscorelist to file");
+        for(int i=0; i< highscoreList.size(); i++){
+            tempArraylist.add(new Player("temp", "0", Disk.Color.BLACK));
+            
+            tempArraylist.get(i).setUsername(highscoreList.get(i).getUsername());
+            tempArraylist.get(i).setEndScore(highscoreList.get(i).getEndScore());   
         }
+
+        fileHandler.write(tempArraylist);
+
     }
     
     /**

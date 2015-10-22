@@ -1,8 +1,8 @@
 package game;
 
+
+import java.io.Serializable;
 import java.util.Comparator;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -10,7 +10,7 @@ import javafx.beans.property.StringProperty;
  * The player class for the game Othello. A player will be able to controll all the actions on the board. AI will also have the same Player rights but it's algorithms will in return only do specific things.
  * @author Joachim Zetterman & Rasmus Jansson.
  */
-public class Player {
+public class Player implements Serializable{
 
     private int posX;
     private int posY;

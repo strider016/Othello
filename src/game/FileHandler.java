@@ -14,7 +14,7 @@ public class FileHandler {
     /**
      * Reads the file "highscore.ser" and filles a list with read players.
      * Returns a reference to this list. 
-     * @return highscoreList, of type ObservableList<Player>
+     * @return highscoreList, of type ArrayList<Player>
      * @throws Exception 
      */
     public ArrayList<Player> read() throws Exception {
@@ -27,6 +27,7 @@ public class FileHandler {
             ois = new ObjectInputStream(fin);
 
             highscoreList = (ArrayList<Player>) ois.readObject();
+            
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find file, creating new...");
             return null;
@@ -40,7 +41,7 @@ public class FileHandler {
     }
     
     /**
-     * Writes to the file "highscore.ser". Inputed variable should be of type ObservableList<Player> 
+     * Writes to the file "highscore.ser". Inputed variable should be of type ArrayList<Player> 
      * @param highscoreList, of type ObservableList<Player> 
      * @throws Exception 
      */
@@ -50,6 +51,7 @@ public class FileHandler {
             FileOutputStream fout = new FileOutputStream("highscore.ser");
             oos = new ObjectOutputStream(fout);
             oos.writeObject(highscoreList);
+            
 
         } finally {
             if (oos != null) {

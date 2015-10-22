@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 public class HighScore{
    
     private ObservableList<Player> highscoreList = FXCollections.observableArrayList();;
+
     
     /**
      * Default constructor, does not call any method
