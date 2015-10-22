@@ -1,7 +1,7 @@
 package game;
 
 import java.io.*;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
 
 /**
  * A filehandler. Contains a read and write methods. It read and writes to a file named "highscore.ser"
@@ -17,16 +17,16 @@ public class FileHandler {
      * @return highscoreList, of type ObservableList<Player>
      * @throws Exception 
      */
-    public ObservableList<Player> read() throws Exception {
+    public ArrayList<Player> read() throws Exception {
 
         ObjectInputStream ois = null;
-        ObservableList<Player> highscoreList;
+        ArrayList<Player> highscoreList;
         try {
             FileInputStream fin = new FileInputStream("highscore.ser");
             
             ois = new ObjectInputStream(fin);
 
-            highscoreList = (ObservableList<Player>) ois.readObject();
+            highscoreList = (ArrayList<Player>) ois.readObject();
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find file, creating new...");
             return null;
@@ -44,7 +44,7 @@ public class FileHandler {
      * @param highscoreList, of type ObservableList<Player> 
      * @throws Exception 
      */
-    public void write(ObservableList<Player> highscoreList) throws Exception {
+    public void write(ArrayList<Player> highscoreList) throws Exception {
         ObjectOutputStream oos = null;
         try {
             FileOutputStream fout = new FileOutputStream("highscore.ser");

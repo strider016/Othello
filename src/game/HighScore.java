@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
  */
 public class HighScore{
    
-    private ObservableList<Player> highscoreList = FXCollections.observableArrayList();
+    private ObservableList<Player> highscoreList = FXCollections.observableArrayList();;
     
     /**
      * Default constructor, does not call any method
@@ -25,6 +25,10 @@ public class HighScore{
      */
     public ObservableList<Player> getHighscoreList(){
         return highscoreList;
+    }
+    
+    public void setHighscoreList(ObservableList<Player> highscoreList){
+        this.highscoreList = highscoreList;
     }
     
     /**

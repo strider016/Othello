@@ -34,11 +34,19 @@ public class AI extends Player {
         }
     }
     
+    
     public void checkForMoveWithMaxPoint(){
         transform();
+        Pos maxPos;
         
         for(int i=0; i<avalibleSlotsTransformed.size() ; i++){
             for(int j=0; j<locationDisksTransformed.size() ; j++){
+                
+                
+                
+                
+                
+                
                 
                 
                 

@@ -51,6 +51,7 @@ public class Board {
         for (int i = 0; i<BOARD_SIZE;i++){
             for (int j = 0; j<BOARD_SIZE;j++){
                 if (board.get(i).get(j).getColor()==p.getColor()){
+                    
                     if ((i+1)<BOARD_SIZE && board.get(i+1).get(j).getColor()!=p.getColor() && board.get(i+1).get(j).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (i+2<BOARD_SIZE) {
@@ -66,6 +67,7 @@ public class Board {
                             }
                         }
                     }
+                    
                     if ((i-1)>-1 && board.get(i-1).get(j).getColor()!=p.getColor() && board.get(i-1).get(j).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (i-2>-1) {
@@ -81,6 +83,7 @@ public class Board {
                             }
                         }
                     }
+                    
                     if (j+1<BOARD_SIZE && board.get(i).get(j+1).getColor()!=p.getColor() && board.get(i).get(j+1).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (j+2<BOARD_SIZE) {
@@ -96,6 +99,7 @@ public class Board {
                             }
                         }
                     }
+                    
                     if ((j-1)>-1 && board.get(i).get(j-1).getColor()!=p.getColor() && board.get(i).get(j-1).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (j-2>-1) {

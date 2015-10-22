@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import javafx.collections.FXCollections;
 
 /**
  * Game class for the game Othello.
@@ -34,16 +35,27 @@ public class Game implements Serializable{
         board = new Board(); //sets 4 center disks?
         highScore = new HighScore();
         
+        readAndList();
+
+    }
+    
+    private void readAndList(){
+        ArrayList<Player> temp = new ArrayList<>();
+        ObservableList<Player> highscoreList = highScore.getHighscoreList();
+        
         try {
-            highScore.getHighscoreList().addAll(fileHandler.read());
+            temp = fileHandler.read();
         } catch (Exception ex) {
-            
         }
         
-//        for(Player p : highScore.getHighscoreList()){
-//            System.out.println("Players : " + p.getEndScore());
-//        }
-
+        int i=0;
+        for(Player p : temp){
+            highscoreList.get(i).setUsername(p.getUsername());
+            highscoreList.get(i).setEndScore(p.getEndScore());
+            i++;
+        }  
+        
+        highScore.setHighscoreList(highscoreList);
     }
     
     public void newGame(){
@@ -142,8 +154,18 @@ public class Game implements Serializable{
      * Write the highscore list to the file specified in the filehandler class
      */
     public void writeToFile(){ 
+        ArrayList<Player> temp = new ArrayList();
+        ObservableList<Player> highscoreList = highScore.getHighscoreList();
+        
+        int i=0;
+        for(Player p : highscoreList){
+            temp.get(i).setUsername(p.getUsername());
+            temp.get(i).setEndScore(p.getEndScore());
+            i++;
+        }  
+        
         try {
-            fileHandler.write(highScore.getHighscoreList());
+            fileHandler.write(temp);
         } catch (Exception ex) {
             System.out.println("Could no write the highscorelist to file");
         }
