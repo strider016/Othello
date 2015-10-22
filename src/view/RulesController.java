@@ -17,16 +17,21 @@ import javafx.scene.text.TextFlow;
  */
 public class RulesController {
     @FXML
-    private TextFlow rules;
+    private TextFlow rulesTable;
 
+    @FXML
+    private String text;
     
     private UI ui;
 
     @FXML
     private void initialize(){
+        
+    
     }
 
-    public void setUi(UI ui){
+    public void setRulesTable(UI ui){
         this.ui=ui;
+        
     }
 }

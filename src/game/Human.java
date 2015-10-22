@@ -1,7 +1,7 @@
 package game;
 
 /**
- * Created by rasmusjansson on 19/10/15.
+ * @author Joachim Zetterman & Rasmus Jansson.
  */
 public class Human extends Player{
     public void placeDisk(int posX, int posY){

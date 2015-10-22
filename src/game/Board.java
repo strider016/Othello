@@ -4,13 +4,21 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
- * Created by rasmusjansson on 19/10/15.
+ * This class represents a board containing a collection of disks in the form of an 2d ArrayList.
+ * This class also reads and writes to a .ser file
+ * 
+ * @author Joachim Zetterman & Rasmus Jansson.
  */
 public class Board {
     private static int BOARD_SIZE = 8;
     private int nmbOfDisks;
     private ArrayList<ArrayList<Disk>> board;
-
+    
+    
+    /**
+     * Constructor creates a new arraylist (8x8) and fills it with disks.
+     * It also places the 4 starting disks which you have at a start of an Othello game.
+     */
     public Board(){
         board = new ArrayList<>();
         nmbOfDisks=64;
@@ -22,12 +30,17 @@ public class Board {
             }
             board.add(rowBoard);
         }
+
         placeDisk(3,3,false);
         placeDisk(3,4,true);
         placeDisk(4,3,true);
         placeDisk(4,4,false);
     }
-
+    
+    /**
+     * Get nmb of remaning disks
+     * @return nmbOfDisks
+     */
     public int getDisksRemaining(){
         return nmbOfDisks;
     }
@@ -116,7 +129,15 @@ public class Board {
         return mySlots;
     }
 
+    /**
+     * Places a disk on the desired row and colum. It returns true/false depending if the place is already occupied by a disk.
+     * @param row int
+     * @param column int
+     * @param player boolean
+     * @return true or false
+     */
     public boolean placeDisk(int row,int column,boolean player){
+
         if (!placedOccupied(row,column)){
             board.get(row).get(column).setPlaced(player);
              return true;
@@ -124,11 +145,21 @@ public class Board {
             return false;
         }
     }
-
+    
+    /**
+     * Checks if the position on the board is occupied via inputed row and column
+     * @param row
+     * @param column
+     * @return true or false
+     */
     public boolean placedOccupied(int row, int column){
         return board.get(row).get(column).isPlaced();
     }
 
+    /**
+     * Get the board of type ArrayList<ArrayList<Disk>>
+     * @return board
+     */
     public ArrayList<ArrayList<Disk>> getBoard() {
         return board;
     }

@@ -14,21 +14,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- *
- * @author Zetterman
+ * Game class for the game Othello.
+ * This class contains and controlls all the other classes in the package. This class can be connected to a UI class in order to alter data.
+ * @author Joachim Zetterman & Rasmus Jansson.
  */
-
 public class Game implements Serializable{
     private Board board;
-    private Rules rules;
     private HighScore highScore;
     private FileHandler fileHandler = new FileHandler();
     private Player playerOne;
     private Player playerTwo;
-
+    
+    /**
+     * Constructor for Game.
+     * Creates a new board and highscore. It also reads in all the eventual highscore data and adds it to the highscore list.
+     */
     public Game() {
         board = new Board(); //sets 4 center disks?
-        rules = new Rules();
         highScore = new HighScore();
         
         try {
@@ -37,9 +39,9 @@ public class Game implements Serializable{
             
         }
         
-        for(Player p : highScore.getHighscoreList()){
-            System.out.println("Players : " + p.getEndScore());
-        }
+//        for(Player p : highScore.getHighscoreList()){
+//            System.out.println("Players : " + p.getEndScore());
+//        }
 
     }
     
@@ -49,6 +51,9 @@ public class Game implements Serializable{
         playerTwo = new Player("Joachim","30", Disk.Color.BLACK);
     }
     
+    /**
+     * Sorts the high score list with a custome made comparator. The list is sorted with the highest scored players at the top to bottom.
+     */
     public void sortHighScore(){
         Collections.sort(highScore.getHighscoreList(), Player.getCompByEndScore());
     }
@@ -62,17 +67,25 @@ public class Game implements Serializable{
         highScore.addNewHighscore(new Player("Joachim", "42", Disk.Color.BLACK));
         
     }
-
+    
+    /**
+     * Add a players highscore to the high score list
+     * @param p 
+     */
     public void addHighScore(Player p){
         highScore.addNewHighscore(p);
     }
-
+    
+    /**
+     * Gets the highscore list of the type ObservableList<Player>
+     * @return 
+     */
     public ObservableList<Player> getHighscore(){
         return highScore.getHighscoreList();
     }
 
     /**
-     * Place a disk a specified location and who placed it
+     *  Places a disk on desired position. If the place is already occupied it will not place.
      *
      * @param row int row on board
      * @param column int column on board
@@ -83,7 +96,13 @@ public class Game implements Serializable{
             board.placeDisk(row,column,player);
         }
     }
-
+    
+    /**
+     * Checks if the place is occupied via the inputed position. Returns true if the place is occupied. 
+     * @param row
+     * @param column
+     * @return true or false
+     */
     public boolean placeOccupied(int row, int column){
         return board.placedOccupied(row, column);
     }
@@ -105,6 +124,9 @@ public class Game implements Serializable{
         }
     }
     
+    /**
+     * Write the highscore list to the file specified in the filehandler class
+     */
     public void writeToFile(){ 
         try {
             fileHandler.write(highScore.getHighscoreList());
@@ -112,19 +134,35 @@ public class Game implements Serializable{
             System.out.println("Could no write the highscorelist to file");
         }
     }
-
+    
+    /**
+     * Gets the player one name
+     * @return ,a reference of the type String
+     */
     public String getPlayerOneName(){
         return playerOne.getUsername();
     }
-
+    
+    /**
+     * Gets the player one score
+     * @return ,a reference of the type String
+     */
     public String getPlayerOneScore(){
         return playerOne.getCurrentScoreString();
     }
-
+    
+     /**
+     * Gets the player two name
+     * @return ,a reference of the type String
+     */
     public String getPlayerTwoName(){
         return playerTwo.getUsername();
     }
-
+    
+     /**
+     * Gets the player two score
+     * @return ,a reference of the type String
+     */
     public String getPlayerTwoScore(){
         return playerTwo.getCurrentScoreString();
     }
