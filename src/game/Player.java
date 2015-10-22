@@ -17,7 +17,7 @@ public class Player {
     private SimpleStringProperty username;
     private SimpleStringProperty endScore;
     
-    public static Disk.Color color;
+    private  Disk.Color color;
 
     public Player(){
         //this(null,null);
@@ -92,6 +92,10 @@ public class Player {
 
     public String getCurrentScoreString(){
         return Integer.toString(currentScore);
+    }
+
+    public Disk.Color getColor(){
+        return color;
     }
 
     public void placeDisk(){

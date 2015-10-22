@@ -45,14 +45,8 @@ public class Game implements Serializable{
     
     public void newGame(){
         board = new Board();
-        game();
-    }
-    
-    public void game(){
-        
-        //Some sort of while loop
-        
-        
+        playerOne = new Player("Rasmus","30", Disk.Color.WHITE);
+        playerTwo = new Player("Joachim","30", Disk.Color.BLACK);
     }
     
     public void sortHighScore(){
@@ -77,23 +71,21 @@ public class Game implements Serializable{
         return highScore.getHighscoreList();
     }
 
-    public void placeDisk(int row, int column){
-        /*if (board.placeDisk(row,column)){
-            return true;
-        }else {
-            return false;
-        }*/
+    /**
+     * Place a disk a specified location and who placed it
+     *
+     * @param row int row on board
+     * @param column int column on board
+     * @param player boolean of whos turn it is, false = player 1, true = player 2
+     */
+    public void placeDisk(int row, int column,boolean player){
         if (!board.placedOccupied(row, column)){
-            board.placeDisk(row,column);
+            board.placeDisk(row,column,player);
         }
     }
 
     public boolean placeOccupied(int row, int column){
-        if (board.placedOccupied(row, column)){
-            return true;
-        }else {
-            return false;
-        }
+        return board.placedOccupied(row, column);
     }
 
     public void printPlacedBoard(){
@@ -135,5 +127,25 @@ public class Game implements Serializable{
 
     public String getPlayerTwoScore(){
         return playerTwo.getCurrentScoreString();
+    }
+    
+    public ArrayList<String> getAvailableSlots(boolean turn){
+        if (turn){
+            return board.getAvailableSlots(playerTwo);
+        }else {
+            return board.getAvailableSlots(playerOne);
+        }
+    }
+
+    public ArrayList<String> getLocationDisks(boolean turn){
+        if (turn){
+            return board.getLocationDisks(playerTwo);
+        }else {
+            return board.getLocationDisks(playerOne);
+        }
+    }
+
+    public boolean isGameOver(){
+        return false;
     }
 }

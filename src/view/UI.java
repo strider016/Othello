@@ -6,8 +6,10 @@
 package view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import game.Player;
+import javafx.animation.*;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +32,11 @@ public class UI extends Application {
     private Stage primaryStage;
     private Stage highscoreStage;
     private Controller testcontroller;
+    private GameBoardController gameBoardController;
     private boolean turn;
+    private AnimationTimer timer;
+    private ArrayList<String> availableSlots;
+
 
     public UI() {
         game = new Game();
@@ -41,7 +47,35 @@ public class UI extends Application {
     public static void main(String[] args)  {
         launch(args);
     }
-    
+
+    protected class BlinkTimer extends AnimationTimer{
+        private long previousNS = 0;
+        private int row,column;
+
+
+        @Override
+        public void handle(long nowNs) {
+            if (previousNS == 0){
+                previousNS = nowNs;
+            }
+
+            previousNS=nowNs;
+
+            for (int i = 0;i<availableSlots.size();i++){
+                String tmp = availableSlots.get(i);
+                String[] tmparr = tmp.split("[^\\d]+");
+                row = Integer.parseInt(tmparr[0]);
+                column = Integer.parseInt(tmparr[1]);
+                gameBoardController.blinkAvailableSlot(row,column);
+            }
+
+            if (game.isGameOver()){
+                timer.stop();
+            }
+
+        }
+    }
+
     public void initBackgroundLayout(){
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -68,11 +102,13 @@ public class UI extends Application {
 
             rootPane.setCenter(page);
 
-            GameBoardController controller = loader.getController();
-            controller.setUI(this);
-            controller.setPane(page);
-            controller.newBoard();
-            controller.handleSquareSelected();
+            //GameBoardController controller = loader.getController();
+            gameBoardController = loader.getController();
+            gameBoardController.setUI(this);
+            gameBoardController.setPane(page);
+            gameBoardController.newBoard();
+            gameBoardController.handleSquareSelected();
+
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -104,19 +140,24 @@ public class UI extends Application {
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Othello");
-        
+
+        timer = new BlinkTimer();
+        timer.start();
 
         initBackgroundLayout();
         initGameBoard();
+        newGame();
+        availableSlots = game.getAvailableSlots(turn);
     }
 
     public void newGame(){
         game.newGame();
         initGameBoard();
+        turn=false;
     }
 
-    public Game getGame(){
-        return this.game;
+    public void writeToFile(){
+        game.writeToFile();
     }
     
     public String getPlayerOneName(){
@@ -140,7 +181,11 @@ public class UI extends Application {
     }
 
     public void setTestLabel(String text){
-        testcontroller.setTestLabel(text);
+        if (turn) {
+            testcontroller.setTestLabel(text + "    Black");
+        }else {
+            testcontroller.setTestLabel(text + "    White");
+        }
     }
 
     public ObservableList<Player> getHighscore(){
@@ -148,15 +193,16 @@ public class UI extends Application {
     }
 
     public void placeDisk(int row, int column){
-        game.placeDisk(row,column);
+        //printAvailbleSlots();
+        game.placeDisk(row,column,turn);
+        changeTurn();
+        printAvailbleSlots();
+        availableSlots = game.getAvailableSlots(turn);
+
     }
 
     public boolean placeOccupied(int row, int column){
-        if (game.placeOccupied(row,column)){
-            return true;
-        }else {
-            return false;
-        }
+        return game.placeOccupied(row,column);
     }
 
     /**
@@ -169,11 +215,32 @@ public class UI extends Application {
         return turn;
     }
 
-    public void changeTurn(){
+    private void changeTurn(){
         turn ^= true;
+    }
+
+    public ArrayList<String> getAvailableSlots(){
+        return game.getAvailableSlots(turn);
+    }
+
+    public ArrayList<String> getLocationDisks(){
+        return game.getLocationDisks(turn);
     }
 
     public void printBoard(){
         game.printPlacedBoard();
+    }
+
+    public void printAvailbleSlots(){
+        int row,column;
+        ArrayList<String> b = getAvailableSlots();
+        System.out.println("------------");
+        for (int i = 0;i<b.size();i++){
+            String tmp = b.get(i);
+            String[] tmparr = tmp.split("[^\\d]+");
+            row = Integer.parseInt(tmparr[0]);
+            column = Integer.parseInt(tmparr[1]);
+            System.out.println(row + "/" + column);
+        }
     }
 }

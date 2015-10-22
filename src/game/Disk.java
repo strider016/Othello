@@ -7,13 +7,13 @@ public class Disk {
     
     
     public enum Color{
-        BLACK, WHITE
+        BLACK, WHITE , EMPTY
     }
     private boolean placed;
     private Color color;
 
     public Disk(){
-
+        color=Color.EMPTY;
     }
 
     public Disk(Color color){
@@ -29,8 +29,13 @@ public class Disk {
         }
     }
 
-    public boolean setPlaced(){
+    public boolean setPlaced(boolean owner){
         if (placed == false) {
+            if (!owner){
+                color = Color.WHITE;
+            }else {
+                color = Color.BLACK;
+            }
             return placed = true;
         }else {
             return false;

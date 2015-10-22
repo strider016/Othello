@@ -50,12 +50,12 @@ public class Controller {
     }
     
     private void startGame(){
-        ui.getGame().newGame();
+        ui.newGame();
     }
 
     @FXML
     private void HandleExitButton(){
-        ui.getGame().writeToFile();
+        ui.writeToFile();
         System.exit(0);
     }
 
