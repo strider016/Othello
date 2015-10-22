@@ -51,7 +51,7 @@ public class Board {
         for (int i = 0; i<BOARD_SIZE;i++){
             for (int j = 0; j<BOARD_SIZE;j++){
                 if (board.get(i).get(j).getColor()==p.getColor()){
-                    
+                    //Looking in down
                     if ((i+1)<BOARD_SIZE && board.get(i+1).get(j).getColor()!=p.getColor() && board.get(i+1).get(j).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (i+2<BOARD_SIZE) {
@@ -67,7 +67,7 @@ public class Board {
                             }
                         }
                     }
-                    
+                    //Looking up
                     if ((i-1)>-1 && board.get(i-1).get(j).getColor()!=p.getColor() && board.get(i-1).get(j).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (i-2>-1) {
@@ -83,7 +83,7 @@ public class Board {
                             }
                         }
                     }
-                    
+                    //Looking right
                     if (j+1<BOARD_SIZE && board.get(i).get(j+1).getColor()!=p.getColor() && board.get(i).get(j+1).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (j+2<BOARD_SIZE) {
@@ -99,7 +99,7 @@ public class Board {
                             }
                         }
                     }
-                    
+                    //Looking left
                     if ((j-1)>-1 && board.get(i).get(j-1).getColor()!=p.getColor() && board.get(i).get(j-1).getColor()!= Disk.Color.EMPTY){
                         rot=0;
                         if (j-2>-1) {
@@ -112,6 +112,94 @@ public class Board {
                             }
                             if (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY) {
                                 avalibleSlots.add(Integer.toString((i)) + " " + Integer.toString(j - 1 - rot));
+                            }
+                        }
+                    }
+                    //Looking up right
+                    if ((i-1)>-1 && board.get(i-1).get(j).getColor()!=p.getColor() && board.get(i-1).get(j).getColor()!= Disk.Color.EMPTY){
+                        if (j+1<BOARD_SIZE && board.get(i).get(j+1).getColor()!=p.getColor() && board.get(i).get(j+1).getColor()!= Disk.Color.EMPTY){
+                            rot=0;
+                            if (i-2>-1 && j+2<BOARD_SIZE){
+                                while ((board.get(i - 1 - rot).get(j).getColor() != p.getColor() && (board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY || (i - 1 - rot) > -1)) && (board.get(i).get(j + 1 + rot).getColor() != p.getColor() && (board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY || (j + 1 + rot) < BOARD_SIZE))){
+                                    if (board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY && board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY) {
+                                        break;
+                                    }
+                                    if (board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY && board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY || j+1+rot>=BOARD_SIZE) {
+                                        break;
+                                    }
+                                    rot++;
+                                }
+                                if (board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY) {
+                                    if (board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY) {
+                                        avalibleSlots.add(Integer.toString((i)) + " " + Integer.toString(j + 1 + rot));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //Looking up left
+                    if ((i-1)>-1 && board.get(i-1).get(j).getColor()!=p.getColor() && board.get(i-1).get(j).getColor()!= Disk.Color.EMPTY){
+                        if ((j-1)>-1 && board.get(i).get(j-1).getColor()!=p.getColor() && board.get(i).get(j-1).getColor()!= Disk.Color.EMPTY){
+                            rot = 0;
+                            if (i-2>-1 && j-2<-1){
+                                while ((board.get(i - 1 - rot).get(j).getColor() != p.getColor() && (board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY || (i - 1 - rot) > -1)) && (board.get(i).get(j - 1 - rot).getColor() != p.getColor() && (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY || (j - 1 - rot) > -1))){
+                                    if (board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY && board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY) {
+                                        break;
+                                    }
+                                    if (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY && board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY) {
+                                        break;
+                                    }
+                                    rot++;
+                                }
+                                if (board.get(i - 1 - rot).get(j).getColor() == Disk.Color.EMPTY) {
+                                    if (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY) {
+                                        avalibleSlots.add(Integer.toString((i - 1 - rot)) + " " + Integer.toString(j));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //Looking down right
+                    if ((i+1)<BOARD_SIZE && board.get(i+1).get(j).getColor()!=p.getColor() && board.get(i+1).get(j).getColor()!= Disk.Color.EMPTY){
+                        if (j+1<BOARD_SIZE && board.get(i).get(j+1).getColor()!=p.getColor() && board.get(i).get(j+1).getColor()!= Disk.Color.EMPTY){
+                            rot = 0;
+                            if (i+2<BOARD_SIZE && j+2<BOARD_SIZE){
+                                while ((board.get(i + 1 + rot).get(j).getColor() != p.getColor() && (board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY || (i + 1 + rot) < BOARD_SIZE)) && (j+1<BOARD_SIZE && board.get(i).get(j+1).getColor()!=p.getColor() && board.get(i).get(j+1).getColor()!= Disk.Color.EMPTY)){
+                                    if (board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY && board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY || i+1+rot>=BOARD_SIZE) {
+                                        break;
+                                    }
+                                    if (board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY && board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY || j+1+rot>=BOARD_SIZE) {
+                                        break;
+                                    }
+                                    rot++;
+                                }
+                                if (board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY && i+1+rot<BOARD_SIZE) {
+                                    if (board.get(i).get(j + 1 + rot).getColor() == Disk.Color.EMPTY) {
+                                        avalibleSlots.add(Integer.toString((i + 1 + rot)) + " " + Integer.toString(j));
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //Looking down left
+                    if ((i+1)<BOARD_SIZE && board.get(i+1).get(j).getColor()!=p.getColor() && board.get(i+1).get(j).getColor()!= Disk.Color.EMPTY){
+                        if ((j-1)>-1 && board.get(i).get(j-1).getColor()!=p.getColor() && board.get(i).get(j-1).getColor()!= Disk.Color.EMPTY){
+                            rot=0;
+                            if (i+2<BOARD_SIZE && j-2<-1){
+                                while ((board.get(i + 1 + rot).get(j).getColor() != p.getColor() && (board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY || (i + 1 + rot) < BOARD_SIZE)) && (board.get(i).get(j - 1 - rot).getColor() != p.getColor() && (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY || (j - 1 - rot) > -1))){
+                                    if (board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY && board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY || i+1+rot>=BOARD_SIZE) {
+                                        break;
+                                    }
+                                    if (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY && board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY) {
+                                        break;
+                                    }
+                                    rot++;
+                                }
+                                if (board.get(i + 1 + rot).get(j).getColor() == Disk.Color.EMPTY && i+1+rot<BOARD_SIZE) {
+                                    if (board.get(i).get(j - 1 - rot).getColor() == Disk.Color.EMPTY) {
+                                        avalibleSlots.add(Integer.toString((i + 1 + rot)) + " " + Integer.toString(j));
+                                    }
+                                }
                             }
                         }
                     }

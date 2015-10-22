@@ -58,14 +58,16 @@ public class Game implements Serializable{
         highScore.setHighscoreList(highscoreList);
     }
     
-    public void newGame(){
+    public void newGame(String usrPlayerOne,String usrPlayerTwo,boolean mode){
         board = new Board();
-        playerOne = new Player("Rasmus","30", Disk.Color.WHITE);
-        playerTwo = new Player("Joachim","30", Disk.Color.BLACK);
-        
-        ai = new AI();
-        ai.setColor(Disk.Color.BLACK);
-        
+        if (mode){
+            playerOne = new Player(usrPlayerOne,"0", Disk.Color.WHITE);
+            playerTwo = new Player(usrPlayerTwo,"0", Disk.Color.BLACK);
+        }else {
+            playerOne = new Player(usrPlayerOne,"0",Disk.Color.WHITE);
+            ai = new AI(Disk.Color.BLACK);
+            //playerTwo = new AI(usrPlayerTwo,"0",Disk.Color.BLACK);
+        }
     }
     
     /**
@@ -120,6 +122,8 @@ public class Game implements Serializable{
     public void placeDisk(int row, int column,boolean player){
         if (!board.placedOccupied(row, column)){
             board.placeDisk(row,column,player);
+            playerOne.setCurrentScore(board.getLocationDisks(playerOne).size());
+            playerTwo.setCurrentScore(board.getLocationDisks(playerTwo).size());
         }
     }
     

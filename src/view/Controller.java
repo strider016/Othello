@@ -42,15 +42,11 @@ public class Controller {
         notCompleted.setText(text);
     }
 
-    private void showGameInformation(){
+    public void showGameInformation(){
         playerOneLabel.setText(ui.getPlayerOneName());
         playerOneScoreLabel.setText(ui.getPlayerOneScore());
         playerTwoLabel.setText(ui.getPlayerTwoName());
         playerTwoScoreLabel.setText(ui.getPlayerTwoScore());
-    }
-    
-    private void startGame(){
-        ui.newGame();
     }
 
     @FXML
@@ -61,11 +57,7 @@ public class Controller {
 
     @FXML
     private void HandleNewGameButton(){
-        notCompleted.setText(TBA + "New Game");
-        //testLabel.setText(TBA);
-        showGameInformation();
-        ui.printBoard();
-        ui.newGame();
+        ui.initNewGameWindow();
     }
 
     @FXML

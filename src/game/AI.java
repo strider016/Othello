@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class AI extends Player {
     
    
-    private int rowMax, columnMax; 
+    private int rowMax, columnMax;
+    private Disk.Color color;
     private ArrayList<String> availableSlots;
     private ArrayList<String> locationDisks;
     
@@ -18,8 +19,8 @@ public class AI extends Player {
     /** 
      * Constructor of AI
      */
-    public AI(){
-        
+    public AI(Disk.Color color){
+        this.color = color;
     }
     
     private class Pos{
