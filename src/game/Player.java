@@ -167,4 +167,5 @@ public class Player {
     public Disk.Color getColor(){
         return color;
     }
+
 }

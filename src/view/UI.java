@@ -76,7 +76,8 @@ public class UI extends Application {
                     gameBoardController.blinkAvailableSlot(row, column,availableSlots.size());
                 }
             }
-
+            
+            
             if (game.isGameOver()){
                 timer.stop();
             }
@@ -201,7 +202,6 @@ public class UI extends Application {
 
 
         initBackgroundLayout();
-        initGameBoard();
     }
 
     public void newGame(String usrPlayerOne, String usrPlayerTwo, boolean mode){
