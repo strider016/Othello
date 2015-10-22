@@ -14,6 +14,7 @@ import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
@@ -33,13 +34,14 @@ public class UI extends Application {
     private Game game;
     private BorderPane rootPane;
     private Stage primaryStage;
-    private Stage highscoreStage;
-    private Stage rulesStage;
+    private Stage newGameStage;
     private Controller testcontroller;
     private GameBoardController gameBoardController;
+
     private boolean turn;
     private AnimationTimer timer;
     private ArrayList<String> availableSlots;
+    private boolean gameRunning;
 
 
     public UI() {
@@ -65,12 +67,14 @@ public class UI extends Application {
 
             previousNS=nowNs;
 
-            for (int i = 0;i<availableSlots.size();i++){
-                String tmp = availableSlots.get(i);
-                String[] tmparr = tmp.split("[^\\d]+");
-                row = Integer.parseInt(tmparr[0]);
-                column = Integer.parseInt(tmparr[1]);
-                gameBoardController.blinkAvailableSlot(row,column);
+            if (gameRunning) {
+                for (int i = 0; i < availableSlots.size(); i++) {
+                    String tmp = availableSlots.get(i);
+                    String[] tmparr = tmp.split("[^\\d]+");
+                    row = Integer.parseInt(tmparr[0]);
+                    column = Integer.parseInt(tmparr[1]);
+                    gameBoardController.blinkAvailableSlot(row, column,availableSlots.size());
+                }
             }
 
             if (game.isGameOver()){
@@ -124,18 +128,18 @@ public class UI extends Application {
             loader.setLocation(UI.class.getResource("highscore.fxml"));
             BorderPane page = loader.load();
 
-            rulesStage = new Stage();
-            rulesStage.setTitle("Highscore");
-            rulesStage.initModality(Modality.WINDOW_MODAL);
-            rulesStage.initOwner(primaryStage);
+            Stage highscoreStage = new Stage();
+            highscoreStage.setTitle("Highscore");
+            highscoreStage.initModality(Modality.WINDOW_MODAL);
+            highscoreStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
-            rulesStage.setScene(scene);
+            highscoreStage.setScene(scene);
 
 
             HighscoreController controller = loader.getController();
-            //controller.setHighscoreTable(this);
+            controller.setHighscoreTable(this);
 
-            rulesStage.showAndWait();
+            highscoreStage.showAndWait();
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -145,53 +149,70 @@ public class UI extends Application {
         try{
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(UI.class.getResource("rulesLayout.fxml"));
-            TextFlow text = loader.load();
-            
-            Text rule1 = new Text("Rule 1: White begins by placing a piece, white-side up, adjacent to a black piece and opposite another white piece, so that a line of one or more black pieces directly intervenes (horizontally, vertically or diagonally) between the two white pieces.");
-            Text rule2 = new Text("\n\nRule 2: When White places a piece so that an adjacent black piece is between two whites, the black piece is surrendered, or flipped over to white.");
-            Text rule3 = new Text("\n\nRule 3: You may capture one or more pieces on a given turn. Also, you may capture any number of your opponent's pieces in one or more rows diagonally, vertically and horizontally.");
-            Text winCondition = new Text("\n\nWin condition: The winner is the player with the most pieces of his or her color on the board at the end of the game. You may also win by completely eradicating your opponent's color from the game board.");
-            
-            text.getChildren().addAll(rule1, rule2, rule3, winCondition);
-            
-            highscoreStage = new Stage();
-            highscoreStage.setTitle("Rules");
-            highscoreStage.initModality(Modality.WINDOW_MODAL);
-            highscoreStage.initOwner(primaryStage);
-            Scene scene = new Scene(text);
-            highscoreStage.setScene(scene);
+            AnchorPane page = loader.load();
 
+            Stage rulesStage = new Stage();
+            rulesStage.setTitle("Rules");
+            rulesStage.initModality(Modality.WINDOW_MODAL);
+            rulesStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            rulesStage.setScene(scene);
 
             RulesController controller = loader.getController();
-            
+            controller.placeText();
 
-            //controller.setHighscoreTable(this);
-
-            highscoreStage.showAndWait();
+            rulesStage.showAndWait();
             
         }catch (IOException e){
             e.printStackTrace();
         }
     }
-    
+
+    public void initNewGameWindow(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(UI.class.getResource("newgamelayout.fxml"));
+            AnchorPane page = loader.load();
+
+            //Stage newGameStage = new Stage();
+            newGameStage = new Stage();
+            newGameStage.setTitle("New Game");
+            newGameStage.initModality(Modality.WINDOW_MODAL);
+            newGameStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            newGameStage.setScene(scene);
+
+            NewGameController controller = loader.getController();
+            controller = loader.getController();
+            controller.setUi(this);
+
+            newGameStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Othello");
 
         timer = new BlinkTimer();
-        timer.start();
+
 
         initBackgroundLayout();
         initGameBoard();
-        newGame();
-        availableSlots = game.getAvailableSlots(turn);
     }
 
-    public void newGame(){
-        game.newGame();
+    public void newGame(String usrPlayerOne, String usrPlayerTwo, boolean mode){
+        newGameStage.close();
+        game.newGame(usrPlayerOne,usrPlayerTwo,mode);
+        testcontroller.showGameInformation();
         initGameBoard();
         turn=false;
+        gameRunning = true;
+        availableSlots = game.getAvailableSlots(turn);
+        timer.start();
     }
 
     public void writeToFile(){
@@ -199,23 +220,19 @@ public class UI extends Application {
     }
     
     public String getPlayerOneName(){
-        //return game.getPlayerOneName();
-        return "Jeffrey";
+        return game.getPlayerOneName();
     }
 
     public String getPlayerOneScore(){
-        //return game.getPlayerOneScore();
-        return "0";
+        return game.getPlayerOneScore();
     }
 
     public String getPlayerTwoName(){
-        //return game.getPlayerTwoScore();
-        return "Milley";
+        return game.getPlayerTwoName();
     }
 
     public String getPlayerTwoScore(){
-        //return game.getPlayerTwoScore();
-        return "0";
+        return game.getPlayerTwoScore();
     }
 
     public void setTestLabel(String text){
@@ -231,9 +248,9 @@ public class UI extends Application {
     }
 
     public void placeDisk(int row, int column){
-        //printAvailbleSlots();
         game.placeDisk(row,column,turn);
         changeTurn();
+        testcontroller.showGameInformation();
         printAvailbleSlots();
         availableSlots = game.getAvailableSlots(turn);
 

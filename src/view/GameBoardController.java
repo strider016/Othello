@@ -15,6 +15,7 @@ import javafx.scene.shape.Circle;
 import javafx.animation.*;
 import javafx.util.Duration;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -101,7 +102,6 @@ public class GameBoardController {
                             }else {
                                 squareSelectedColumn=GridPane.getColumnIndex(node);
                             }
-                            //blinkAvailableSlot(squareSelectedRow,squareSelectedColumn);
                             ui.setTestLabel((squareSelectedRow + 1) + "/" + (squareSelectedColumn + 1));
                             if (!ui.placeOccupied(squareSelectedRow,squareSelectedColumn)){
                                 if (ui.getPlayerTurn()){
@@ -115,7 +115,6 @@ public class GameBoardController {
                                     String[] tmparr = tmp.split("[^\\d]+");
                                     row = Integer.parseInt(tmparr[0]);
                                     column = Integer.parseInt(tmparr[1]);
-                                    //blinkAvailableSlot(row,column);
                                     if (squareSelectedRow==row && squareSelectedColumn==column){
                                         try {
                                             ((HBox) node).getChildren().add((Node) FXMLLoader.load(getClass().getResource(diskcolor)));
@@ -134,28 +133,28 @@ public class GameBoardController {
         });
     }
 
-    public void blinkAvailableSlot(int rowIn,int columnIn){
+    public void blinkAvailableSlot(int rowIn,int columnIn,int size){
         int row,column;
         FadeTransition ft;
 
-        row=rowIn*67+rowIn+20;
-        column=columnIn*99+columnIn+20;
+        row=rowIn*67+rowIn;
+        column=columnIn*99+columnIn;
 
         int bol = 10;
-        //for (int i = 0; i<tmpList.size();i++){
+        for (int i = 0; i<size;i++){
             for (Node node:gridPane.getChildren()){
                 if (node instanceof HBox){
                     if (node.getBoundsInParent().contains(column,row)){
                         ft = new FadeTransition(Duration.millis(1500),node);
                         ft.setFromValue(1.0);
                         ft.setToValue(0.4);
-                        ft.setCycleCount(10);//Animation.INDEFINITE);
+                        ft.setCycleCount(Animation.INDEFINITE);
                         ft.setAutoReverse(true);
                         ft.play();
                     }
                 }
 
             }
-        //}
+        }
     }
 }
