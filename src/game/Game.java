@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -29,7 +31,7 @@ public class Game implements Serializable{
      * Constructor for Game.
      * Creates a new board and highscore. It also reads in all the eventual highscore data and adds it to the highscore list.
      */
-    public Game() throws Exception{
+    public Game(){
         board = new Board(); //sets 4 center disks?
         highScore = new HighScore();
         fileHandler = new FileHandler();
@@ -38,11 +40,16 @@ public class Game implements Serializable{
 
     }
     
-    private void readAndList() throws Exception{
-        ArrayList<Player> temp;
+    private void readAndList() {
+        ArrayList<Player> temp=null;
         ObservableList<Player> highscoreList = highScore.getHighscoreList();
+
+        try {
+            temp = fileHandler.read();
+        } catch (Exception ex) {
         
-        temp = fileHandler.read();
+        }
+
         if(temp==null){
                 temp = new ArrayList();
         }
@@ -180,7 +187,7 @@ public class Game implements Serializable{
     /**
      * Write the highscore list to the file specified in the filehandler class
      */
-    public void writeToFile() throws Exception{ 
+    public void writeToFile() { 
         ArrayList<Player> tempArraylist = new ArrayList();
         ObservableList<Player> highscoreList = highScore.getHighscoreList();
         
@@ -191,7 +198,11 @@ public class Game implements Serializable{
             tempArraylist.get(i).setEndScore(highscoreList.get(i).getEndScore());   
         }
 
-        fileHandler.write(tempArraylist);
+        try {
+            fileHandler.write(tempArraylist);
+        } catch (Exception ex) {
+            System.out.println("Could not write to file");
+        }
 
     }
     

@@ -44,7 +44,7 @@ public class UI extends Application {
     private boolean gameRunning;
 
 
-    public UI() {
+    public UI() throws Exception{
         game = new Game();
         game.addHighscoreTest();
         game.sortHighScore();
@@ -215,7 +215,7 @@ public class UI extends Application {
         timer.start();
     }
 
-    public void writeToFile(){
+    public void writeToFile() {
         game.writeToFile();
     }
     
