@@ -119,8 +119,7 @@ public class GameBoardController {
                                     if (squareSelectedRow==row && squareSelectedColumn==column){
                                         try {
                                             ((HBox) node).getChildren().add((Node) FXMLLoader.load(getClass().getResource(diskcolor)));
-                                            ui.placeDisk(squareSelectedRow, squareSelectedColumn);
-                                            ui.changeTurn();
+
                                         } catch (IOException e1) {
                                             e1.printStackTrace();
                                         }
@@ -130,6 +129,8 @@ public class GameBoardController {
                         }
                     }
                 }
+                ui.placeDisk(squareSelectedRow, squareSelectedColumn);
+                ui.changeTurn();
             }
         });
     }

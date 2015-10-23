@@ -45,7 +45,11 @@ public class UI extends Application {
 
 
     public UI() {
-        game = new Game();
+        try {
+            game = new Game();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         game.addHighscoreTest();
         game.sortHighScore();
     }
@@ -216,7 +220,11 @@ public class UI extends Application {
     }
 
     public void writeToFile(){
-        game.writeToFile();
+        try {
+            game.writeToFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public String getPlayerOneName(){

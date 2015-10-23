@@ -39,13 +39,26 @@ public class NewGameController {
     public void setUi(UI ui){
         this.ui=ui;
     }
+
     @FXML
     private void handleNewGameButton(){
+        Stage stage = (Stage) newGameButton.getScene().getWindow();
         if (group.getSelectedToggle()==onePlayerMode) {
-            ui.newGame(playerOne.getText(),bot,false);
+            if (playerOne.getText().isEmpty()){
+                ui.newGame("Player 1",bot,false);
+            }else {
+                ui.newGame(playerOne.getText(), bot, false);
+            }
+            stage.close();
         }else if (group.getSelectedToggle()==twoPlayerMode){
-            ui.newGame(playerOne.getText(),playerTwo.getText(),true);
-            Stage stage = (Stage) newGameButton.getScene().getWindow();
+            if (playerOne.getText().isEmpty() && playerTwo.getText().isEmpty()){
+                ui.newGame("Player 1","Player 2",true);
+            }else if (playerOne.getText().isEmpty()){
+                ui.newGame("Player 1",playerTwo.getText(),true);
+            }else {
+                ui.newGame(playerOne.getText(), playerTwo.getText(), true);
+            }
+
             stage.close();
         }
     }

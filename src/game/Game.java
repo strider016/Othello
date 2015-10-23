@@ -244,9 +244,9 @@ public class Game implements Serializable{
     }
 
     public boolean isGameOver(boolean turn){
-        if (getAvailableSlots(turn).size()<=0){
+        /*if (getAvailableSlots(turn).size()<=0){
             return true;
-        }
+        }*/
         return false;
     }
 }
