@@ -59,6 +59,7 @@ public class AI extends Player {
                     if(avalibleSlotsTransformed.get(i).getRow() > locationDisksTransformed.get(j).getRow()){
                         distance = avalibleSlotsTransformed.get(i).getRow() - locationDisksTransformed.get(j).getRow();
                         if(distance > maxDistance){
+                            maxDistance = distance;
                             maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
                             maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
                         }
@@ -66,6 +67,7 @@ public class AI extends Player {
                     else if (avalibleSlotsTransformed.get(i).getRow() < locationDisksTransformed.get(j).getRow()){
                         distance = locationDisksTransformed.get(j).getRow()  - avalibleSlotsTransformed.get(i).getRow();
                         if(distance > maxDistance){
+                            maxDistance = distance;
                             maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
                             maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
                         }
@@ -77,6 +79,7 @@ public class AI extends Player {
                     if(avalibleSlotsTransformed.get(i).getColumn() > locationDisksTransformed.get(j).getColumn()){
                         distance = avalibleSlotsTransformed.get(i).getColumn() - locationDisksTransformed.get(j).getColumn();
                         if(distance > maxDistance){
+                            maxDistance = distance;
                             maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
                             maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
                         }
@@ -84,6 +87,7 @@ public class AI extends Player {
                     else if (avalibleSlotsTransformed.get(i).getColumn() < locationDisksTransformed.get(j).getColumn()){
                         distance = locationDisksTransformed.get(j).getColumn()  - avalibleSlotsTransformed.get(i).getColumn();
                         if(distance > maxDistance){
+                            maxDistance = distance;
                             maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
                             maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
                         }
