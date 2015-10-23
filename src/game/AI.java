@@ -27,9 +27,18 @@ public class AI extends Player {
         private int row;
         private int column;
         
+        public int getRow(){
+            return this.row;
+        }
+        
         public void setRow(int row){
             this.row = row;
         }
+        
+        public int getColumn(){
+            return this.column;
+        }
+        
         public void setColumn(int column){
             this.column = column;
         }
@@ -38,21 +47,54 @@ public class AI extends Player {
     
     public void checkForMoveWithMaxPoint(){
         transform();
-        Pos maxPos;
+        Pos maxPos = new Pos();
+        int maxDistance=0;
+        int distance=0;
         
         for(int i=0; i<avalibleSlotsTransformed.size() ; i++){
             for(int j=0; j<locationDisksTransformed.size() ; j++){
                 
+                //Check Column
+                if(avalibleSlotsTransformed.get(i).getColumn() == locationDisksTransformed.get(j).getColumn()){
+                    if(avalibleSlotsTransformed.get(i).getRow() > locationDisksTransformed.get(j).getRow()){
+                        distance = avalibleSlotsTransformed.get(i).getRow() - locationDisksTransformed.get(j).getRow();
+                        if(distance > maxDistance){
+                            maxDistance = distance;
+                            maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
+                            maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
+                        }
+                    }
+                    else if (avalibleSlotsTransformed.get(i).getRow() < locationDisksTransformed.get(j).getRow()){
+                        distance = locationDisksTransformed.get(j).getRow()  - avalibleSlotsTransformed.get(i).getRow();
+                        if(distance > maxDistance){
+                            maxDistance = distance;
+                            maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
+                            maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
+                        }
+                    }
+                }
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
+                //Check row
+                if(avalibleSlotsTransformed.get(i).getRow() == locationDisksTransformed.get(j).getRow()){
+                    if(avalibleSlotsTransformed.get(i).getColumn() > locationDisksTransformed.get(j).getColumn()){
+                        distance = avalibleSlotsTransformed.get(i).getColumn() - locationDisksTransformed.get(j).getColumn();
+                        if(distance > maxDistance){
+                            maxDistance = distance;
+                            maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
+                            maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
+                        }
+                    }
+                    else if (avalibleSlotsTransformed.get(i).getColumn() < locationDisksTransformed.get(j).getColumn()){
+                        distance = locationDisksTransformed.get(j).getColumn()  - avalibleSlotsTransformed.get(i).getColumn();
+                        if(distance > maxDistance){
+                            maxDistance = distance;
+                            maxPos.setColumn(avalibleSlotsTransformed.get(i).getColumn());
+                            maxPos.setRow(avalibleSlotsTransformed.get(i).getRow());
+                        }
+                    }
+                  
+                 //Checks diagonal??
+                }
             }
         }
         

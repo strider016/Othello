@@ -1,6 +1,8 @@
 package view;
 
 import game.Player;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;

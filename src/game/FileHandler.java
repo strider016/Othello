@@ -17,7 +17,7 @@ public class FileHandler {
      * @return highscoreList, of type ArrayList<Player>
      * @throws Exception 
      */
-    public ArrayList<Player> read() throws Exception {
+    public ArrayList<Player> read()  throws Exception{
 
         ObjectInputStream ois = null;
         ArrayList<Player> highscoreList;
@@ -31,11 +31,17 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find file, creating new...");
             return null;
+        
         } finally {
-            if (ois != null) {
-                ois.close();
-            }
+            try{
 
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (IOException e){
+                
+            }
+           
         }
         return highscoreList;
     }

@@ -42,14 +42,9 @@ public class UI extends Application {
     private AnimationTimer timer;
     private ArrayList<String> availableSlots;
     private boolean gameRunning;
-
-
-    public UI() {
-        try {
-            game = new Game();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    
+    public UI() throws Exception{
+        game = new Game();
         game.addHighscoreTest();
         game.sortHighScore();
     }
@@ -219,12 +214,8 @@ public class UI extends Application {
         timer.start();
     }
 
-    public void writeToFile(){
-        try {
-            game.writeToFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void writeToFile() {
+        game.writeToFile();
     }
     
     public String getPlayerOneName(){
